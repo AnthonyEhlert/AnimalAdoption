@@ -1,6 +1,6 @@
 package adoption.beans;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-public class animal {
+public class Animal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class animal {
 	private String name;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss a")
-	private LocalDate lastFed;
+	private LocalDateTime lastFed;
 	
 	private boolean available;
 }
