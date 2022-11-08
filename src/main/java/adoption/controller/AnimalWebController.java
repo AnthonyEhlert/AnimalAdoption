@@ -36,7 +36,7 @@ public class AnimalWebController {
 	@GetMapping("/viewAvailableAnimals")
 	public String viewAvailableAnimals(Model model) {
 		model.addAttribute("animals", animalRepo.findByAvailable(true));
-		return "avilableAnimalResults";
+		return "availableAnimalResults";
 	}
 	
 	@GetMapping("inputAnimal")
