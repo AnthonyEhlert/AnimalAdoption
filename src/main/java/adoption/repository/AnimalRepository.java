@@ -1,5 +1,7 @@
 package adoption.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import adoption.beans.Animal;
@@ -12,4 +14,5 @@ import adoption.beans.Animal;
  */
 public interface AnimalRepository extends JpaRepository<Animal, Long>{
 
+	List<Animal> findByAvailable(boolean available);
 }
