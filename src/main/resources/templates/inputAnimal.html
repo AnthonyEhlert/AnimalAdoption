@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Animal</title>
+</head>
+<body>
+    <form th:object="${newAnimal}" th:action="@{/updateAnimal/{id}(id=${newAnimal.id})}" method='POST'>
+        Animal Name: <input name="name" size="20" th:field="*{name}" required> <br /> <br />
+        Age: <input name="age" type= number size="15" th:field="*{age}" required><br /><br />
+        Available: <input name="available" type="checkbox" th:field="*{available}"><br /><br/>
+        Last Fed: <input name="lastFedDate" type= "date" th:field="*{lastFedDate}" required>
+                  <input name="lastFedTime" type="time" th:field="*{lastFedTime}" required><br /><br />
+        <p><label for="description"> Description: </label></p>
+        <textarea id="description" name="description" rows="4" cols="60" th:field="*{description}"></textarea>
+        <br />
+        Animal Attributes: <br />
+        <table>
+                <tr>
+                    <th></th>
+                    <th>Attribute Name</th>
+                </tr>
+                <tr th:each="currentAnimalAttribute : ${animalAttributes}">
+                    <td> <input type="checkbox" th:name="animalAttributeId" th:field="*{listOfAttributes}" th:value="${currentAnimalAttribute.id}">
+                    <td th:text="${currentAnimalAttribute.attributeName}">
+                </tr>
+        </table>
+        
+        <input name="submit" type="submit" value="Submit" />
+    </form>
+    <br /><br />
+    <a href="../viewAllAnimals">View all Animals</a><br /><br />
+    <a href="../viewAvailable">View Available Animals</a><br /><br />
+    <a href="../index.html">Home Page</a>
+</body>
+</html>
