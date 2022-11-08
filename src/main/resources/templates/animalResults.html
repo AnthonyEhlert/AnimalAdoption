@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+</style>
+<meta charset="UTF-8">
+<title>View All Animals</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Animal Name</th>
+                <th>Age</th>
+                <th>Available for Adoption</th>
+                <th>Last Fed</th>
+                <th>Description</th>
+                <th>Attributes</th>
+            </tr>
+            <tr th:each="currentAnimal : ${animals}">
+                <td th:text="${currentAnimal.id}" />
+                <td th:text="${currentAnimal.name}">
+                <td th:text="${currentAnimal.age}">
+                <td th:text="${currentAnimal.available}">
+                <td th:text="${currentAnimal.lastFedDate} + ', ' + ${currentAnimal.lastFedTime}">
+                <td th:text="${currentAnimal.description}">
+                <td align="center">
+                    <table>
+                        <tr th:each="animalAttribute : ${currentAnimal.listOfAttributes}">
+                            <td align="center" th:text="${animalAttribute.attributeName}">
+                    </table>
+                </td>
+                <td><a th:href="@{/editAnimal/{id}(id=${currentAnimal.id})}">Edit</a></td>
+                <td><a th:href="@{/deleteAnimal/{id}(id=${currentAnimal.id})}">Delete</a></td>
+            </tr>
+        </table>
+    </form>
+    <a href="../inputAnimal">Add a New Animal</a><br /><br />
+    <a href="../index.html">Home Page</a>
+</body>
+</html>
