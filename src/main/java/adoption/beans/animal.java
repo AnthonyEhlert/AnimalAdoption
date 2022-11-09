@@ -45,6 +45,7 @@ public class Animal {
 	
 	
 	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	//@ManyToMany(mappedBy= "listOfAnimals", cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER) 
 	private List<AnimalAttribute> listOfAttributes;
 	
 	private boolean available;
