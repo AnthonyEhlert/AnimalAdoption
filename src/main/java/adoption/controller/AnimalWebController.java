@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import adoption.beans.Animal;
+import adoption.beans.AnimalAttribute;
 import adoption.repository.AnimalAttributeRepository;
 import adoption.repository.AnimalRepository;
 
@@ -71,5 +72,44 @@ public class AnimalWebController {
 		Animal a = animalRepo.findById(id).orElse(null);
 		animalRepo.delete(a);
 		return viewAllAnimals(model);
+	}
+	
+	@GetMapping("/viewAllAnimalAttributes")
+	public String viewAllAnimalAttributes(Model model) {
+		model.addAttribute("animalAttributes", attributeRepo.findAll());
+		return "animalAttributeResults";
+	}
+	
+	@GetMapping("inputAnimalAttribute")
+	public String addNewAnimalAttribute(Model model) {
+		AnimalAttribute aa = new AnimalAttribute();
+		model.addAttribute("newAnimalAttribute", aa);
+		return "inputAnimalAttribute";
+	}
+	
+	@PostMapping("/inputAnimalAttribute")
+	public String addNewAnimalAttribute(@ModelAttribute AnimalAttribute aa, Model model) {
+		attributeRepo.save(aa);
+		return viewAllAnimalAttributes(model);
+	}
+	
+	@GetMapping("/editAnimalAttribute/{id}")
+	public String showUpdateAnimalAttribute(@PathVariable("id") long id, Model model) {
+		AnimalAttribute aa = attributeRepo.findById(id).orElse(null);
+		model.addAttribute("newAnimalAttribute", aa);
+		return "inputAnimalAttribute";
+	}
+	
+	@PostMapping("/updateAnimalAttribute/{id}")
+	public String reviseAnimalAttribute(AnimalAttribute aa, Model model) {
+		attributeRepo.save(aa);
+		return viewAllAnimalAttributes(model);
+	}
+	
+	@GetMapping("/deleteAnimalAttribute/{id}")
+	public String deleteAnimalAttribute(@PathVariable("id") long id, Model model) {
+		AnimalAttribute aa = attributeRepo.findById(id).orElse(null);
+		attributeRepo.delete(aa);
+		return viewAllAnimalAttributes(model);
 	}
 }
