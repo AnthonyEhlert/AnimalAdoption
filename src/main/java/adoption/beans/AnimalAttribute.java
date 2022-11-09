@@ -30,6 +30,7 @@ public class AnimalAttribute {
 	
 	private String attributeName;
 	
-	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	//@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy= "listOfAttributes", cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<Animal> listOfAnimals;
 }
