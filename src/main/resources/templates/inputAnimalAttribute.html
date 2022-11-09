@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Animal Attribute</title>
+</head>
+<body>
+    <form th:object="${newAnimalAttribute}" th:action="@{/updateAnimalAttribute/{id}(id=${newAnimalAttribute.id})}" method='POST'>
+        Attribute Name: <input name="attributeName" size="20" th:field="*{attributeName}" required> <br /> <br />
+        <input name="submit" type="submit" value="Submit" />
+    </form>
+    <br /><br />
+    <a href="../viewAllAnimals">View all Animal Attributes</a><br /><br />
+    <a href="../index.html">Home Page</a>
+</body>
+</html>
