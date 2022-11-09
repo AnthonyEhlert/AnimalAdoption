@@ -23,6 +23,7 @@ th, td {
                 <th>Id</th>
                 <th>Animal Name</th>
                 <th>Age</th>
+                <th>Animal Type</th>
                 <th>Available for Adoption</th>
                 <th>Last Fed</th>
                 <th>Description</th>
@@ -32,6 +33,7 @@ th, td {
                 <td th:text="${currentAnimal.id}" />
                 <td th:text="${currentAnimal.name}">
                 <td th:text="${currentAnimal.age}">
+                <td th:text="${currentAnimal.animalType}">
                 <td th:text="${currentAnimal.available}">
                 <td th:text="${currentAnimal.lastFedDate} + ', ' + ${currentAnimal.lastFedTime}">
                 <td th:text="${currentAnimal.description}">
