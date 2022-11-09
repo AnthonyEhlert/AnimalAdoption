@@ -5,7 +5,7 @@
 <title>Insert New Animal Attribute</title>
 </head>
 <body>
-    <form th:object="${newAnimalAttribure}" th:action="@{/updateAnimalAttribute/{id}(id=${newAnimalAttribute.id})}" method='POST'>
+    <form th:object="${newAnimalAttribute}" th:action="@{/updateAnimalAttribute/{id}(id=${newAnimalAttribute.id})}" method='POST'>
         Attribute Name: <input name="attributeName" size="20" th:field="*{attributeName}" required> <br /> <br />
         <input name="submit" type="submit" value="Submit" />
     </form>
