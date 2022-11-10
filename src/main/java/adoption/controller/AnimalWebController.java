@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
@@ -74,6 +76,13 @@ public class AnimalWebController {
 		return viewAllAnimals(model);
 	}
 	
+	@RequestMapping ("/searchAnimalType")
+	public String searchAnimalType(@RequestParam("animalType") String animalType, Model model) {
+	    model.addAttribute("animals", animalRepo.findByAnimalType(animalType));
+	    return "animalResults";
+	    }
+	
+	//AnimalAttribute methods
 	@GetMapping("/viewAllAnimalAttributes")
 	public String viewAllAnimalAttributes(Model model) {
 		model.addAttribute("animalAttributes", attributeRepo.findAll());
