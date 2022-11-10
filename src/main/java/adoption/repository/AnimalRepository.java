@@ -15,4 +15,6 @@ import adoption.beans.Animal;
 public interface AnimalRepository extends JpaRepository<Animal, Long>{
 
 	List<Animal> findByAvailable(boolean available);
+	
+	List<Animal> findByAnimalType(String animalType);
 }
