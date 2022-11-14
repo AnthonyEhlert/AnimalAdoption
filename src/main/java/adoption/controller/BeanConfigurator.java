@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 
 import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
+import adoption.beans.Adopter;
 
 /**
  * @author Tony Ehlert - aehlert
@@ -21,6 +22,12 @@ public class BeanConfigurator {
 	@Bean
 	public AnimalAttribute animalAttribute() {
 		AnimalAttribute bean = new AnimalAttribute();
+		return bean;
+	}
+	
+	@Bean
+	public Adopter adopter() {
+		Adopter bean = new Adopter();
 		return bean;
 	}
 }
