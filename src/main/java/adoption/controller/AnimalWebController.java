@@ -23,12 +23,6 @@ import adoption.repository.AdopterRepository;
  * Nov 8, 2022
  */
 
-/*
- * @author Noah Clark - npclark
- * CIS175 Fall 2022
- * Nov 14, 2022
- */
-
 @Controller
 public class AnimalWebController {
 
@@ -37,9 +31,6 @@ public class AnimalWebController {
 	
 	@Autowired
 	AnimalAttributeRepository attributeRepo;
-	
-	@Autowired
-	AdopterRepository adopterRepo;
 	
 	@GetMapping("/viewAllAnimals")
 	public String viewAllAnimals(Model model) {
@@ -131,45 +122,5 @@ public class AnimalWebController {
 		AnimalAttribute aa = attributeRepo.findById(id).orElse(null);
 		attributeRepo.delete(aa);
 		return viewAllAnimalAttributes(model);
-	}
-	
-	//Adopter methods
-	@GetMapping("/viewAllAdopters")
-	public String viewAllAdopters(Model model) {
-		model.addAttribute("adopters", adopterRepo.findAll());
-		return "adopterResults";
-	}
-	
-	@GetMapping("inputAdopter")
-	public String addNewAdopter(Model model) {
-		Adopter ad = new Adopter();
-		model.addAttribute("newAdopter", ad);
-		return "inputAdopter";
-	}
-	
-	@PostMapping("/inputAdopter")
-	public String addNewAdopter(@ModelAttribute Adopter ad, Model model) {
-		adopterRepo.save(ad);
-		return viewAllAdopters(model);
-	}
-	
-	@GetMapping("editAdopter/{id}")
-	public String showUpdateAdopter(@PathVariable("id") long id, Model model) {
-		Adopter ad = adopterRepo.findById(id).orElse(null);
-		model.addAttribute("newAdopter", ad);
-		return "inputAdopter";
-	}
-	
-	@PostMapping("/updateAdopter/{id}")
-	public String reviseAdopter(Adopter ad, Model model) {
-		adopterRepo.save(ad);
-		return viewAllAdopters(model);
-	}
-	
-	@GetMapping("/deleteAdopter/{id}")
-	public String deleteAdopter(@PathVariable("id") long id, Model model) {
-		Adopter ad = adopterRepo.findById(id).orElse(null);
-		adopterRepo.delete(ad);
-		return viewAllAdopters(model);
 	}
 }
