@@ -31,6 +31,6 @@ public class Adopter {
 	private String email;
 	private String phone;
 	
-//	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-//	private List<AnimalAttribute> listOfAttributes;
+	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	private List<AnimalAttribute> listOfAttributes;
 }
