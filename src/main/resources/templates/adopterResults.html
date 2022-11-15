@@ -32,10 +32,10 @@ th, td {
 				<td th:text="${currentAdopter.email}" />
 				<td th:text="${currentAdopter.phone}" />
 				<td align="center">
-					<table>
-						<tr th:each="animalAttribute : ${currentAdopter.listofAttributes}">
-							<td align="center" th:text="${animalAttribute.attributeName}">
-					</table>
+<!-- 					<table> -->
+<!-- 						<tr th:each="animalAttribute : ${currentAdopter.listofAttributes}"> -->
+<!-- 							<td align="center" th:text="${animalAttribute.attributeName}"> -->
+<!-- 					</table> -->
 				</td>
 				<td><a th:href="@{/editAdopter/{id}(id=${currentAdopter.id})}">Edit</a></td>
 				<td><a th:href="@{/deleteAdopter/{id}(id=${currentAdopter.id})}">Delete</a></td>
