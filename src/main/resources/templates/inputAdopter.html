@@ -5,22 +5,21 @@
 <title>Insert New Adopter</title>
 </head>
 <body>
-	<form th:object="${newAdopter}" th:action="@{/updateAdopter/{id}(id=${newAnimal.id})}" method='POST'>
+	<form th:object="${newAdopter}" th:action="@{/updateAdopter/{id}(id=${newAdopter.id})}" method='POST'>
 		Adopter Name: <input name="name" size="20" th:field="*{name}" required> <br /><br />
 		Email: <input name="email" size="20" th:field="*{email}" required> <br /><br />
-		Phone: <input name="phone" size="20" th:field="*{phone)" required> <br /><br />
+		Phone: <input name="phone" size="20" th:field="*{phone}" required> <br /><br />
 		Animal Attributes: <br />
-		<table>
-			<tr>
-				<th></th>
-				<th>Attribute Name</th>
-			</tr>
-			<tr th:each="currentAnimalAttribute : ${animalAttributes}">
-				<td> <input type="checkbox" th:name="animalAttributeId" th:field="*{listOfAttributes}" th:value="$currentAnimalAttribute.id}">
-				<td th:text="${currentAnimalAttribute.attributeName}">
-			</tr>
-		</table>
-		
+        <table>
+            <tr>
+                <th></th>
+                <th>Attribute Name</th>
+            </tr>
+            <tr th:each="currentAnimalAttribute : ${animalAttributes}">
+                <td> <input type="checkbox" th:name="animalAttributeId" th:field="*{listOfAttributes}" th:value="$currentAnimalAttribute.id}">
+                <td th:text="${currentAnimalAttribute.attributeName}">
+            </tr>
+        </table>
 		<input name="submit" type="submit" value="Submit" />
 	</form>
 	<br /><br />
