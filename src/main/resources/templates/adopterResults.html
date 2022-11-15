@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+</style>
+<meta charset="UTF-8">
+<title>View All Adopters</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Attributes</th>
+			</tr>
+			<tr th:each="currentAdopter : ${adopters}">
+				<td th:text="${currentAdopter.id}" />
+				<td th:text="${currentAdopter.name}" />
+				<td th:text="${currentAdopter.email}" />
+				<td th:text="${currentAdopter.phone}" />
+				<td align="center">
+					<table>
+						<tr th:each="animalAttribute : ${currentAdopter.listofAttributes}">
+							<td align="center" th:text="${animalAttribute.attributeName}">
+					</table>
+				</td>
+				<td><a th:href="@{/editAdopter/{id}(id=${currentAdopter.id})}">Edit</a></td>
+				<td><a th:href="@{/deleteAdopter/{id}(id=${currentAdopter.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+	<a href="../inputAdopter">Add a New Adopter</a><br /><br />
+	<a href="../index.html">Home Page</a>
+</body>
+</html>
