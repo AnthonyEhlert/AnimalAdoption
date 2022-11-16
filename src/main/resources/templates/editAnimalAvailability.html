@@ -6,21 +6,27 @@
 </head>
 <body>
     <form th:object="${newAnimal}" th:action="@{/updateAnimal/{id}(id=${newAnimal.id})}" method='POST'>
-        Animal Name: <input name="name" size="20" th:field="*{name}" readonly> <br /> <br />
-        <input type = hidden name="age" size="15" th:field="*{age}" >
-        <input type = hidden name="animalType" size="15" th:field="*{animalType}" required>
-        Available: <input name="available" type="checkbox" th:field="*{available}">
-        <input type = hidden name="lastFedDate" th:field="*{lastFedDate}" >
-                  <input type = hidden name="lastFedTime" th:field="*{lastFedTime}" >
-        <input type = hidden id="description" name="description" th:field="*{description}">
+        Animal Name: <input name="name" size="20" th:field="*{name}" > <br /> <br />
+             <input name="age" type= hidden size="15" th:field="*{age}" required>
+             <input name="animalType" type = hidden size="15" th:field="*{animalType}" required>
+        Available: <input name="available" type="checkbox" th:field="*{available}"><br /><br/>
+             <input name="lastFedDate" type= "hidden" th:field="*{lastFedDate}" >
+                  <input name="lastFedTime" type="hidden" th:field="*{lastFedTime}" >
+        <input type = hidden id="description" name="description" rows="4" cols="60" th:field="*{description}">
+        <br />
+        Animal Attributes: <br />
         <table>
                 <tr>
                     <th></th>
+                    <th>Attribute Name</th>
                 </tr>
                 <tr th:each="currentAnimalAttribute : ${animalAttributes}">
-                    <td> <input type = hidden th:name="animalAttributeId" th:field="*{listOfAttributes}" th:value="${currentAnimalAttribute.id}">
+                    <td> <input type="checkbox" th:name="animalAttributeId" th:field="*{listOfAttributes}"
+                                th:value="${currentAnimalAttribute.id}" onclick="return false">
+                    <td th:text="${currentAnimalAttribute.attributeName}">
                 </tr>
         </table>
+        
         <input name="submit" type="submit" value="Submit" />
     </form>
     <br /><br />
