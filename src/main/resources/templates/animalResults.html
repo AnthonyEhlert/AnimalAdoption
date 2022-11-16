@@ -46,6 +46,7 @@ th, td {
                             <td align="center" th:text="${animalAttribute.attributeName}">
                     </table>
                 </td>
+                <td><a th:href="@{/editAnimalAvailability/{id}(id=${currentAnimal.id})}">Change Availability</a></td>
                 <td><a th:href="@{/editAnimal/{id}(id=${currentAnimal.id})}">Edit</a></td>
                 <td><a th:href="@{/deleteAnimal/{id}(id=${currentAnimal.id})}">Delete</a></td>
             </tr>

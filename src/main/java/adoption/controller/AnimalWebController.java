@@ -61,6 +61,7 @@ public class AnimalWebController {
 	@GetMapping("/editAnimal/{id}")
 	public String showUpdateAnimal(@PathVariable("id") long id, Model model) {
 		Animal a = animalRepo.findById(id).orElse(null);
+		model.addAttribute("animalAttributes", attributeRepo.findAll());
 		model.addAttribute("newAnimal", a);
 		return "inputAnimal";
 	}
@@ -83,6 +84,14 @@ public class AnimalWebController {
 	    model.addAttribute("animals", animalRepo.findByAnimalType(animalType));
 	    return "animalResults";
 	    }
+	
+	@GetMapping("/editAnimalAvailability/{id}")
+    public String showUpdateAnimalAvailability(@PathVariable("id") long id, Model model) {
+        Animal a = animalRepo.findById(id).orElse(null);
+        model.addAttribute("animalAttributes", attributeRepo.findAll());
+        model.addAttribute("newAnimal", a);
+        return "editAnimalAvailability";
+    }
 	
 	//AnimalAttribute methods
 	@GetMapping("/viewAllAnimalAttributes")
