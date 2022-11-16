@@ -17,8 +17,11 @@ th, td {
 <title>View All Animals</title>
 </head>
 <body>
+    <p><button onclick="sortTableByName()">Sort by Name</button>  <button onclick="sortTableByAge()">Sort by Age</button>
+        <button onclick="sortTableByType()">Sort by Type</button>  <button onclick="sortTableByAvailable()">Sort by Availability</button>
+        <button onclick="sortTableByAttributes()">Sort by Attributes</button></p>
     <form>
-        <table>
+        <table id="animalList">
             <tr>
                 <th>Id</th>
                 <th>Animal Name</th>
@@ -50,5 +53,125 @@ th, td {
     </form>
     <a href="../inputAnimal">Add a New Animal</a><br /><br />
     <a href="../index.html">Home Page</a>
+<script>
+function sortTableByName() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("animalList");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+<script>
+function sortTableByAge() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("animalList");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[2];
+      y = rows[i + 1].getElementsByTagName("TD")[2];
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+<script>
+function sortTableByType() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("animalList");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[3];
+      y = rows[i + 1].getElementsByTagName("TD")[3];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+<script>
+function sortTableByAvailable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("animalList");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[4];
+      y = rows[i + 1].getElementsByTagName("TD")[4];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+<script>
+function sortTableByAttributes() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("animalList");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[7];
+      y = rows[i + 1].getElementsByTagName("TD")[7];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
 </body>
 </html>
