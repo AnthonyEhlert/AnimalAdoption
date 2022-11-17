@@ -17,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * @author Tony Ehlert - aehlert
@@ -45,7 +46,8 @@ public class Animal {
 	private LocalTime lastFedTime;
 	
 	
-	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ToString.Exclude
 	//@ManyToMany(mappedBy= "listOfAnimals", cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER) 
 	private List<AnimalAttribute> listOfAttributes;
 	

@@ -69,7 +69,7 @@ public class AnimalWebController {
 	@PostMapping("/updateAnimal/{id}")
 	public String reviseAnimal(Animal a, Model model) {
 		animalRepo.save(a);
-		return viewAllAnimals(model);
+		return "redirect:/viewAllAnimals";
 	}
 	
 	@GetMapping("/deleteAnimal/{id}")
@@ -116,6 +116,7 @@ public class AnimalWebController {
 	@GetMapping("/editAnimalAttribute/{id}")
 	public String showUpdateAnimalAttribute(@PathVariable("id") long id, Model model) {
 		AnimalAttribute aa = attributeRepo.findById(id).orElse(null);
+//		model.addAttribute("animals", animalRepo.findAll());
 		model.addAttribute("newAnimalAttribute", aa);
 		return "inputAnimalAttribute";
 	}
@@ -123,7 +124,7 @@ public class AnimalWebController {
 	@PostMapping("/updateAnimalAttribute/{id}")
 	public String reviseAnimalAttribute(AnimalAttribute aa, Model model) {
 		attributeRepo.save(aa);
-		return viewAllAnimalAttributes(model);
+		return "redirect:/viewAllAnimalAttributes";
 	}
 	
 	@GetMapping("/deleteAnimalAttribute/{id}")
