@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Vet Record</title>
+</head>
+<body>
+	<form th:object="${newVetRecord}" th:action="@{/updateVetRecord/{id}(id=${newVetRecord.id})}" method='POST'>
+		Animal Id: <input name="animalId" size="20" th:field="*{animalId}" required> <br /><br />
+		Vet Name: <input name="vetName" size="20" th:field="*{vetName}" required> <br /><br />
+		<p><label for="diagnosis"> Diagnosis: </label></p>
+		<textarea id="diagnosis" name=diagnosis rows="4" cols="60" th:field="*{diagnosis}"></textarea>
+		<br /><br />
+		<input name="submit" type="submit" value="Submit" />
+	</form>
+	<br /><br />
+	<a href="../viewAllVetRecords">View all Vet Records</a><br /><br />
+	<a href="../index.html">Home Page</a>
+</body>
+</html>
