@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+th, td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+</style>
+<meta charset="UTF-8">
+<title>View All Vet Records</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Animal Id</th>
+				<th>Name</th>
+				<th>Diagnosis</th>
+			</tr>
+			<tr th:each="currentVetRecord : ${vetRecords}">
+				<td th:text="${currentVetRecord.id}" />
+				<td th:text="${currentVetRecord.animalId}" />
+				<td th:text="${currentVetRecord.vetName}" />
+				<td th:text="${currentVetRecord.diagnosis}" />
+				<td><a th:href="@{/editVetRecord/{id}(id=${currentVetRecord.id})}">Edit</a></td>
+				<td><a th:href="@{/deleteVetRecord/{id}(id=${currentVetRecord.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
