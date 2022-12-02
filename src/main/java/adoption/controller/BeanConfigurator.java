@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 
 import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
+import adoption.beans.AnimalOfDay;
 import adoption.beans.Adopter;
 
 /**
@@ -28,6 +29,12 @@ public class BeanConfigurator {
 	@Bean
 	public Adopter adopter() {
 		Adopter bean = new Adopter();
+		return bean;
+	}
+	
+	@Bean
+	public AnimalOfDay animalOfDay() {
+		AnimalOfDay bean = new AnimalOfDay();
 		return bean;
 	}
 }
