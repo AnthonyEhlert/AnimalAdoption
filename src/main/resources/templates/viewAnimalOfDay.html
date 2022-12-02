@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+</style>
+<meta charset="UTF-8">
+<title>Current Featured Animal of Day</title>
+</head>
+<p> Here is Today's Featured Animal</p>
+<body>
+        <table id="animalOfDay">
+            <tr>
+                <th>Date</th>
+                <th>Animal Name</th>
+                <th>Age</th>
+                <th>Animal Type</th>
+<!--                 <th>Available for Adoption</th> -->
+<!--                 <th>Last Fed</th> -->
+                <th>Description</th>
+                <th>Attributes</th>
+            </tr>
+            <tr th:each="currentAnimal : ${animalOfDay}">
+                <td th:text="${currentAnimal.date}" />
+                <td th:text="${currentAnimal.animalOfDay.name}">
+                <td th:text="${currentAnimal.animalOfDay.age}">
+                <td th:text="${currentAnimal.animalOfDay.animalType}">
+<!--                 <td th:text="${currentAnimal.available}"> -->
+<!--                 <td th:text="${currentAnimal.lastFedDate} + ', ' + ${currentAnimal.lastFedTime}"> -->
+                <td th:text="${currentAnimal.animalOfDay.description}">
+                <td align="center">
+                    <table>
+                        <tr th:each="animalAttribute : ${currentAnimal.animalOfDay.listOfAttributes}">
+                            <td align="center" th:text="${animalAttribute.attributeName}">
+                    </table>
+                </td>
+            </tr>
+        </table>
+    <br /><br />
+    <a href="../viewAvailableAnimals">View Available Animals</a><br /><br />
+    <a href="../index.html">Home Page</a>
+</body>
