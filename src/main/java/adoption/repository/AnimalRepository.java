@@ -19,6 +19,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>{
 	
 	List<Animal> findByAnimalType(String animalType);
 	
-	@Query(value = "SELECT id FROM animal ORDER BY RAND() LIMIT 1", nativeQuery = true)
+	@Query(value = "SELECT id FROM animal WHERE available = true ORDER BY RAND() LIMIT 1", nativeQuery = true)
 	long findRandomId();
 }
