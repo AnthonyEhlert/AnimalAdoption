@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
-import adoption.beans.Adopter;
 import adoption.repository.AnimalAttributeRepository;
 import adoption.repository.AnimalRepository;
-import adoption.repository.AdopterRepository;
 
 /**
  * @author Tony Ehlert - aehlert
