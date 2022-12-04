@@ -145,5 +145,12 @@ public class AnimalWebController {
 		model.addAttribute("newAnimal", a);
 		return "lastFed";
 	}
+	
+	@GetMapping("viewDescription/{id}")
+	public String viewDescription(@PathVariable("id") long id, Model model) {
+		Animal a = animalRepo.findById(id).orElse(null);
+		model.addAttribute("animal", a);
+		return "viewDescription";
+	}
 
 }
