@@ -47,7 +47,8 @@ th, td {
                     </table>
                 </td>
                 <td><a th:href="@{/editAnimalAvailability/{id}(id=${currentAnimal.id})}">Change Availability</a></td>
-                <td><a th:href="@{/lastFed/{id}(id=${currentAnimal.id})}">Update Last Fed</a>
+                <td><a th:href="@{/lastFed/{id}(id=${currentAnimal.id})}">Update Last Fed</a></td>
+                <td><a th:href="@{/viewDescription/{id}(id=${currentAnimal.id})}">View Description</a></td>
                 <td><a th:href="@{/editAnimal/{id}(id=${currentAnimal.id})}">Edit</a></td>
                 <td><a th:href="@{/deleteAnimal/{id}(id=${currentAnimal.id})}">Delete</a></td>
             </tr>
