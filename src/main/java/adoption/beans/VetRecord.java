@@ -10,11 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @NoArgsConstructor
@@ -25,7 +24,8 @@ public class VetRecord {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private long animalId; // ID of animal associated with check up
+	@ManyToOne
+	private Animal animal;
 	
 	private String vetName;
 	private String diagnosis;
