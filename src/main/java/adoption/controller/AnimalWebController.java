@@ -131,4 +131,19 @@ public class AnimalWebController {
 		attributeRepo.delete(aa);
 		return viewAllAnimalAttributes(model);
 	}
+	
+	// This section of the file was written by:
+	/*
+	 * @author Noah Clark - npclark
+	 * CIS175 Fall 2022
+	 * Dec 4, 2022
+	 */
+	@GetMapping("lastFed/{id}")
+	public String reviseLastFed(@PathVariable("id") long id, Model model) {
+		Animal a = animalRepo.findById(id).orElse(null);
+		model.addAttribute("animalAttributes", attributeRepo.findAll());
+		model.addAttribute("newAnimal", a);
+		return "lastFed";
+	}
+
 }
