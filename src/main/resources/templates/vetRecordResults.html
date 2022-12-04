@@ -21,13 +21,13 @@ th, td {
 		<table>
 			<tr>
 				<th>Id</th>
-				<th>Animal Id</th>
+				<th>Animal Name</th>
 				<th>Name</th>
 				<th>Diagnosis</th>
 			</tr>
 			<tr th:each="currentVetRecord : ${vetRecords}">
 				<td th:text="${currentVetRecord.id}" />
-				<td th:text="${currentVetRecord.animal.id}" />
+				<td th:text="${currentVetRecord.animal.name}" />
 				<td th:text="${currentVetRecord.vetName}" />
 				<td th:text="${currentVetRecord.diagnosis}" />
 				<td><a th:href="@{/editVetRecord/{id}(id=${currentVetRecord.id})}">Edit</a></td>
