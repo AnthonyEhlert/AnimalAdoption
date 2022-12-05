@@ -6,6 +6,7 @@ import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
 import adoption.beans.AnimalOfDay;
 import adoption.beans.Adopter;
+import adoption.beans.VetRecord;
 
 /**
  * @author Tony Ehlert - aehlert
@@ -29,6 +30,12 @@ public class BeanConfigurator {
 	@Bean
 	public Adopter adopter() {
 		Adopter bean = new Adopter();
+		return bean;
+	}
+	
+	@Bean
+	public VetRecord vetRecord() {
+		VetRecord bean = new VetRecord();
 		return bean;
 	}
 	

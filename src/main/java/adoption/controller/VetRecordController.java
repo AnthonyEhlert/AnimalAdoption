@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import adoption.beans.VetRecord;
+import adoption.repository.AnimalRepository;
 import adoption.repository.VetRecordRepository;
+
 
 @Controller
 public class VetRecordController {
 	@Autowired
 	VetRecordRepository vetRecordRepo;
+	
+	@Autowired
+	AnimalRepository animalRepo;
 	
 	@GetMapping("/viewAllVetRecords")
 	public String viewAllVetRecords(Model model) {
@@ -31,6 +36,7 @@ public class VetRecordController {
 	@GetMapping("inputVetRecord")
 	public String addNewVetRecord(Model model) {
 		VetRecord vr = new VetRecord();
+		model.addAttribute("animals", animalRepo.findAll());
 		model.addAttribute("newVetRecord", vr);
 		return "inputVetRecord";
 	}
@@ -44,6 +50,7 @@ public class VetRecordController {
 	@GetMapping("editVetRecord/{id}")
 	public String showUpdateVetRecord(@PathVariable("id") long id, Model model) {
 		VetRecord vr = vetRecordRepo.findById(id).orElse(null);
+		model.addAttribute("animals", animalRepo.findAll());
 		model.addAttribute("newVetRecord", vr);
 		return "inputVetRecord";
 	}

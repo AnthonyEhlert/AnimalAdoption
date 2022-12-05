@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import adoption.beans.Animal;
 import adoption.beans.AnimalAttribute;
-import adoption.beans.Adopter;
 import adoption.repository.AnimalAttributeRepository;
 import adoption.repository.AnimalRepository;
-import adoption.repository.AdopterRepository;
 
 /**
  * @author Tony Ehlert - aehlert
@@ -133,4 +131,26 @@ public class AnimalWebController {
 		attributeRepo.delete(aa);
 		return viewAllAnimalAttributes(model);
 	}
+	
+	// This section of the file was written by:
+	/*
+	 * @author Noah Clark - npclark
+	 * CIS175 Fall 2022
+	 * Dec 4, 2022
+	 */
+	@GetMapping("lastFed/{id}")
+	public String reviseLastFed(@PathVariable("id") long id, Model model) {
+		Animal a = animalRepo.findById(id).orElse(null);
+		model.addAttribute("animalAttributes", attributeRepo.findAll());
+		model.addAttribute("newAnimal", a);
+		return "lastFed";
+	}
+	
+	@GetMapping("viewDescription/{id}")
+	public String viewDescription(@PathVariable("id") long id, Model model) {
+		Animal a = animalRepo.findById(id).orElse(null);
+		model.addAttribute("animal", a);
+		return "viewDescription";
+	}
+
 }

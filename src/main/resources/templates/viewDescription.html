@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Meet Our Animals!</title>
+</head>
+<body>
+	<h1 th:inline="text">Meet [[${animal.name}]]!</h1><br />
+	<p th:inline="text">[[${animal.description}]]<p>
+	<br /><br />
+    <a href="../viewAvailableAnimals">View Available Animals</a><br /><br />
+    <a href="../index.html">Home Page</a>
+</body>
