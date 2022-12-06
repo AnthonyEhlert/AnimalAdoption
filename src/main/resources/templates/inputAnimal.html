@@ -7,7 +7,7 @@
 <body>
     <form th:object="${newAnimal}" th:action="@{/updateAnimal/{id}(id=${newAnimal.id})}" method='POST'>
         Animal Name: <input name="name" size="20" th:field="*{name}" required> <br /> <br />
-        Age: <input name="age" type= number size="15" th:field="*{age}" required><br /><br />
+        Age: <input name="age" type= number size="15" th:field="*{age}" min="0" required><br /><br />
         Type: <input name="animalType" size="15" th:field="*{animalType}" required><br /><br />
         Available: <input name="available" type="checkbox" th:field="*{available}"><br /><br/>
         Last Fed: <input name="lastFedDate" type= "date" th:field="*{lastFedDate}" >
